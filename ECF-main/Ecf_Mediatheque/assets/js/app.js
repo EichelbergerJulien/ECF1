@@ -21,6 +21,35 @@ let films = [
     }
 ];                           // tableau des films
 
+var granimInstance = new Granim({
+    element: '#canvas-complex',
+    direction: 'top-bottom',
+    isPausedWhenNotInView: true,
+    states: {
+        "default-state": {
+            gradients: [
+                [
+                    { color: '#833ab4', pos: .2 },
+                    { color: '#fd1d1d', pos: .8 },
+                    { color: '#38ef7d', pos: 1 }
+                ], [
+                    { color: '#40e0d0', pos: 0 },
+                    { color: '#ff8c00', pos: .2 },
+                    { color: '#ff0080', pos: .75 }
+                ],
+            ]
+        }
+    }
+});
+
+let image = document.getElementById("canvas-complex");                 // récupère l'élément <canvas> par l'id
+
+document.getElementById("button").addEventListener("click", () => {    // au click du bouton
+    image.classList.toggle("invisible");                               // ajoute la class si absc enlève si présente
+});
+
+
+
 function afficherFilms(liste) {       // fonction afficher des films dans le tableau
     const corps = document.getElementById("liste-films");
     corps.innerHTML = "";
@@ -68,12 +97,12 @@ function ajouterFilm() {           // fonction ajouter film
     const alertBox = document.getElementById("alert");             // constantes
     if (error.length === 0) {
         const film = {
-            titre: titre.charac(0).toUpperCase() + titre.slice(1),
+            titre: titre.charAt(0).toUpperCase() + titre.slice(1),
             annee: annee,
-            auteur: auteur.charat(0).toUpperCase() + titre.slice(1),
+            auteur: auteur.charAt(0).toUpperCase() + auteur.slice(1),
         }
 
-        films.push(film);                    // message couleur et alerte
+        films.push(film);                    // message couleur , alerte , et durée
         alertBox.style.color = "Green";
         alertBox.textContent = "Film ajouter avec succès";
         alertBox.style.display = "Bloquer";
@@ -82,7 +111,7 @@ function ajouterFilm() {           // fonction ajouter film
         afficherFilms(films);
         document.getElementById("form-ajout").reset();
     } else {
-        alertBox.style.color = "Red";           // message couleur et alerte
+        alertBox.style.color = "Red";           // message couleur , alerte , et durée
         alertBox.textContent = "Erreur de saisie dans le formulaire :" + error.join("");
         alertBox.style.display = "Bloquer";
         setTimeout(() => alertBox.style.display = "none", 5000);
@@ -90,12 +119,17 @@ function ajouterFilm() {           // fonction ajouter film
 }
 function supprimerFilm(index) {          // fonction supprimer film
     const confirmation = confirm("Voulez-vous vraiment supprimer ce film");
+    const film = {
+            titre: titre.charAt(0).toUpperCase() + titre.slice(1),
+            annee: annee,
+            auteur: auteur.charAt(0).toUpperCase() + auteur.slice(1),
+        }
     if (confirmation) {
         film.slice(index, 1);
         afficherFilms(films);
     }
 }
-function appliquerFiltre() {            // fonction appliquer un filtre
+function appliquerFiltre() {            // fonction appliquer un filtre par ordre alphabétique
     const filtre = document.getElementById("filtre").value;
     let listeTriee = [...films];
     if (filtre === "titre") {
@@ -105,6 +139,7 @@ function appliquerFiltre() {            // fonction appliquer un filtre
 
         }
     }
+
 }
 afficherFilms(listeTriee);
 

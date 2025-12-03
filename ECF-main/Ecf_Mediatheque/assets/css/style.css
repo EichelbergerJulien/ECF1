@@ -1,11 +1,81 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
 
 body {
-  background-image: 
-            linear-gradient(red, yellow);
+  background-image:
+    url("ECF-main/Ecf_Mediatheque/assets/img/index2.jpg");
+}
+
+@media screen and (max-width: 1200px) {
+
+  body {
+    width: 100%;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  select {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+  }
 
 }
 
+@media screen and (max-width: 768px) {
 
+  body {
+    width: 100%;
+  }
 
+  main {
+    flex-direction: column;
+  }
 
-/* url("/assets/img/index2.jpg");
+  select {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+
+  body {
+    width: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  select {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+}
+ 
+#canvas-basic {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
