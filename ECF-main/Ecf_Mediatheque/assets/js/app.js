@@ -40,7 +40,7 @@ var granimInstance = new Granim({
             ]
         }
     }
-});
+});                          // variable pour librairie js
 
 let image = document.getElementById("canvas-complex");                 // récupère l'élément <canvas> par l'id
 
@@ -120,10 +120,10 @@ function ajouterFilm() {           // fonction ajouter film
 function supprimerFilm(index) {          // fonction supprimer film
     const confirmation = confirm("Voulez-vous vraiment supprimer ce film");
     const film = {
-            titre: titre.charAt(0).toUpperCase() + titre.slice(1),
-            annee: annee,
-            auteur: auteur.charAt(0).toUpperCase() + auteur.slice(1),
-        }
+        titre: titre.charAt(0).toUpperCase() + titre.slice(1),
+        annee: annee,
+        auteur: auteur.charAt(0).toUpperCase() + auteur.slice(1),
+    }
     if (confirmation) {
         film.slice(index, 1);
         afficherFilms(films);
@@ -136,10 +136,8 @@ function appliquerFiltre() {            // fonction appliquer un filtre par ordr
         listeTriee.sort((a, b) => a.title(b.title));
         if (filtre === "annee") {
             listeTriee.sort((a, b) => b.annee - a.annee);
-
         }
     }
-
 }
 afficherFilms(listeTriee);
 

@@ -3,8 +3,8 @@
 // 3 rechercher des films via l'api                      x
 // 4 afficher les resultats de la page                   x
 // 5 afficher la pagination                              ??
-// 6 changer de page                                      
-// 7 message simple ( alert )                            
+// 6 changer de page                                     x
+// 7 message simple ( alert )                            x
 // 8 gestion du formulaire                               
 // 9 initialisation                                      
 
@@ -27,7 +27,7 @@ button.addEventListener('click', () => {
         .then(data => data.json())
 });
 
-        .then(filmsApi => {
+        .then((filmsApi) => {
     reponse.innerHTML = `<p> ${titre} : ${annee} , ${auteur} </p>`
 })
     .catch("Erreur film introuvable");
@@ -57,10 +57,21 @@ function afficherResultats(resultats) {
         div.classList.add("film-cart");
         const poster = film.Poster !== "non disponible" ? film.Poster : "placeholder.jpg";
         div.innerHTML = `< img src ${poster} alt="Poster">
-                         < img src ${film.title}alt="Poster">
-                         < img src ${film.annee}alt="Poster">
-                         < img src ${film.type}alt="Poster">`;
+                         < img src ${film.title} alt="Poster">
+                         < img src ${film.annee} alt="Poster">
+                         < img src ${film.type} alt="Poster">`;
 
         contenu.appendChild(div);
     });
 }
+function changerPage(nouvellePage) {                        // 5. changer de page  
+    pageActuelle = nouvellePage;
+    rechercherFilms(nouvellePage);
+}
+function afficherMessage(texte){                            
+    const alert = document.getElementById("alert-rech");    // 6. message ( alert )
+    alert.textContent = texte;
+    alert.style.display = "block";
+    setTimeout(() =>alert.style.display = "none", 3000);
+    }
+
