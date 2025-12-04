@@ -51,13 +51,13 @@ document.getElementById("button").addEventListener("click", () => {    // au cli
 
 
 function afficherFilms(liste) {       // fonction afficher des films dans le tableau
-    const corps = document.getElementById("liste-films");
-    corps.innerHTML = "";
+    const table = document.getElementById("liste-films");
+    table.innerHTML = "";
     liste.forEach(films, index => {
         const ligne = document.createElement("tr");
         ligne.innerHTML = `<td> ${films.titre} <td/>
-                         <td>   ${films.auteur} <td/>
-                         <td>  ${films.annee} <td/>
+                         <td>   ${films.annee} <td/>
+                         <td>  ${films.realisateur} <td/>
                          <td><button class="btn btn-danger" data-index ="${index}>Supprimer</button><br></td>`;
         corps.appendChild(ligne);
     });
@@ -148,11 +148,3 @@ window.addEventListener("DOMContentLoaded", () => {    // initialisation
     document.getElementById("filtre").addEventListener("change", appliquerFiltre);
 
 });
-
-
-
-
-
-
-
-

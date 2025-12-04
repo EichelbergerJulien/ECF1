@@ -5,37 +5,41 @@
 // 5 afficher la pagination                              ??
 // 6 changer de page                                     x
 // 7 message simple ( alert )                            x
-// 8 gestion du formulaire                               
-// 9 initialisation                                      
+// 8 gestion du formulaire                               x 
+// 9 initialisation                                      x
 
 
 let key = "6a3f186d";     // 1 clé API
-let apiUrl = "http://img.omdbapi.com/?apikey=[key]&";   // 1. Url API
-
+let apiUrl = `http://www.omdbapi.com/?apikey=${key}&s=${titre}&type=${type}&y=${annee}`;   // 1. Url API
 let pageActuelle = 1;
 let derniereRecherche = {};
-
 let button = document.querySelector('#button');
 let reponse = document.querySelector('#reponse');
 let card = document.querySelector('#card');
 
-button.addEventListener('click', () => {
+const titre = ("titre-rech");
+const annee = ("annee-rech");
+const type = ("type-rech");
+
+button.addEventListener("click", () => {
     let filmsApi = document.querySelector('#filmsApi').value;
 
-    fetch(`http://img.omdbapi.com/?apikey=[6a3f186d]&`)               // 2. fetch
+    fetch(apiUrl)               // 2. fetch
 
         .then(data => data.json())
 });
 
         .then((filmsApi) => {
-    reponse.innerHTML = `<p> ${titre} : ${annee} , ${auteur} </p>`
+            console.log(filmsApi);
+            reponse.innerHTML = `<p> ${titre} : ${annee} , ${auteur} </p>`
 })
     .catch("Erreur film introuvable");
 
+
 function rechercherFilms(page = 1) {
-    const titre = document.getElementById("titre-rech").value;         // 3. rechercher film
-    const annee = document.getElementById("annee-rech").value;
-    const type = document.getElementById("type-rech").value;
+    titre = document.getElementById("titre-rech").value;         // 3. rechercher film
+    annee = document.getElementById("annee-rech").value;
+    type = document.getElementById("type-rech").value;
 
     if (titre.length < 1) {
         afficher.message("Veuillez entrer un titre pour rechercher un film !!");
@@ -56,10 +60,10 @@ function afficherResultats(resultats) {
         const div = document.createElement("div");
         div.classList.add("film-cart");
         const poster = film.Poster !== "non disponible" ? film.Poster : "placeholder.jpg";
-        div.innerHTML = `< img src ${poster} alt="Poster">
-                         < img src ${film.title} alt="Poster">
-                         < img src ${film.annee} alt="Poster">
-                         < img src ${film.type} alt="Poster">`;
+        div.innerHTML = `< ="${poster}" alt="">
+                         < ="${film.title}" alt="">
+                         < ="${film.annee}" alt="">
+                         < ="${film.type}" alt="">`;
 
         contenu.appendChild(div);
     });
@@ -68,10 +72,19 @@ function changerPage(nouvellePage) {                        // 5. changer de pag
     pageActuelle = nouvellePage;
     rechercherFilms(nouvellePage);
 }
-function afficherMessage(texte){                            
+function afficherMessage(texte) {
     const alert = document.getElementById("alert-rech");    // 6. message ( alert )
     alert.textContent = texte;
     alert.style.display = "block";
-    setTimeout(() =>alert.style.display = "none", 3000);
-    }
+    setTimeout(() => alert.style.display = "none", 3000);
+}
+function setupForm() {                                  // 7. gestion du formulaire
+    document.getElementById("btn-rech").addEventListener("click" , );
+    e.preventDefault();
+    pageActuelle = 1;
+    rechercherFilms();
+}
 
+window.addEventListener("DOMContentloaded", () => {                 // 8. initialisation
+    setupForm();
+});
