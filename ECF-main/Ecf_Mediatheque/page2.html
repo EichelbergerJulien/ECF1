@@ -15,7 +15,7 @@
 
 <body class="text-center"><br><br>
     <main class="container">
-        <h2>Recherche de film.</h2><br><br>
+        <h2>Afficher les films via l'Api.</h2><br><br>
         <hr><br>
 
         <form method="get" class="text-center" action="recherche de film">
@@ -35,9 +35,18 @@
             </div>
             <br><br>
 
-        </form>
-        <button type="submit" class="btn btn-dark" id="btn-ajouter">Rechercher</button>
+            <button type="submit" class="btn btn-dark" id="btn-ajouter">Rechercher</button><br><br>
 
+            <div class="card">
+                <h5 class="card-poster">: ${data.card}</h5>
+                <ul>
+                    <li>: ${data.titre}</li>
+                    <li>: ${data.annee}</li>
+                    <li>: ${data.type}</li>
+                </ul>
+            </div>
+
+        </form>
 
         <br>
         <hr>

@@ -19,7 +19,7 @@ let films = [
         years: 2019,
         authors: "Andy Muschietti"
     }
-];                           // tableau des films
+];                           // 1. tableau des films
 
 var granimInstance = new Granim({
     element: '#canvas-complex',
@@ -40,17 +40,17 @@ var granimInstance = new Granim({
             ]
         }
     }
-});                          // variable pour librairie js
+});                          // 2. variable pour librairie js
 
-let image = document.getElementById("canvas-complex");                 // récupère l'élément <canvas> par l'id
+let image = document.getElementById("canvas-complex");                 // 3. récupère l'élément <canvas> par l'id
 
-document.getElementById("button").addEventListener("click", () => {    // au click du bouton
+document.getElementById("button").addEventListener("click", () => {    // 4. au click du bouton
     image.classList.toggle("invisible");                               // ajoute la class si absc enlève si présente
 });
 
 
 
-function afficherFilms(liste) {       // fonction afficher des films dans le tableau
+function afficherFilms(liste) {       // 5. fonction afficher des films dans le tableau
     const table = document.getElementById("liste-films");
     table.innerHTML = "";
     liste.forEach(films, index => {
@@ -64,17 +64,17 @@ function afficherFilms(liste) {       // fonction afficher des films dans le tab
     document.querySelectorAll("btn-danger").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const i = e.target.getAttribute("data-index");
-            supprimerFilm();         // supprimer le film
+            supprimerFilm();         // 6. supprimer le film
         });
     })
 }
 
-function afficherForm() {          // fonction afficher / masquer le formulaire
+function afficherForm() {          // 7. fonction afficher / masquer le formulaire
     const form = document.getElementById("form-ajout");
     form.style.display = form.style.display === "block" ? "none" : "block";
 }
 
-function validerForm(titre, annee, auteur) {           // fonction valider formulaire
+function validerForm(titre, annee, auteur) {           // 8. fonction valider formulaire
     let error = [];
     const anneeActuelle = nouvelleDate().toutesLesannee();
     if (titre.length < 2) {
@@ -89,12 +89,12 @@ function validerForm(titre, annee, auteur) {           // fonction valider formu
 }
 return error;
 
-function ajouterFilm() {           // fonction ajouter film 
+function ajouterFilm() {           // 9. fonction ajouter film 
     const titre = document.getElementById("titre").value;
     const annee = parseInt(document.getElementById("annee").value);
     const auteur = document.getElementById("auteur").value;
     const error = validerForm(titre, annee, auteur);
-    const alertBox = document.getElementById("alert");             // constantes
+    const alertBox = document.getElementById("alert");             // 10. constantes
     if (error.length === 0) {
         const film = {
             titre: titre.charAt(0).toUpperCase() + titre.slice(1),
@@ -102,7 +102,7 @@ function ajouterFilm() {           // fonction ajouter film
             auteur: auteur.charAt(0).toUpperCase() + auteur.slice(1),
         }
 
-        films.push(film);                    // message couleur , alerte , et durée
+        films.push(film);                    // 11. message couleur , alerte , et durée
         alertBox.style.color = "Green";
         alertBox.textContent = "Film ajouter avec succès";
         alertBox.style.display = "Bloquer";
@@ -111,13 +111,13 @@ function ajouterFilm() {           // fonction ajouter film
         afficherFilms(films);
         document.getElementById("form-ajout").reset();
     } else {
-        alertBox.style.color = "Red";           // message couleur , alerte , et durée
+        alertBox.style.color = "Red";           // 12. message couleur , alerte , et durée
         alertBox.textContent = "Erreur de saisie dans le formulaire :" + error.join("");
         alertBox.style.display = "Bloquer";
         setTimeout(() => alertBox.style.display = "none", 5000);
     }
 }
-function supprimerFilm(index) {          // fonction supprimer film
+function supprimerFilm(index) {          // 13.fonction supprimer film
     const confirmation = confirm("Voulez-vous vraiment supprimer ce film");
     const film = {
         titre: titre.charAt(0).toUpperCase() + titre.slice(1),
@@ -129,7 +129,7 @@ function supprimerFilm(index) {          // fonction supprimer film
         afficherFilms(films);
     }
 }
-function appliquerFiltre() {            // fonction appliquer un filtre par ordre alphabétique
+function appliquerFiltre() {            // 14. fonction appliquer un filtre par ordre alphabétique
     const filtre = document.getElementById("filtre").value;
     let listeTriee = [...films];
     if (filtre === "titre") {
@@ -141,7 +141,7 @@ function appliquerFiltre() {            // fonction appliquer un filtre par ordr
 }
 afficherFilms(listeTriee);
 
-window.addEventListener("DOMContentLoaded", () => {    // initialisation
+window.addEventListener("DOMContentLoaded", () => {    // 15. initialisation
     afficherFilms(films);
     document.getElementById("btn-ajouter").addEventListener("click", afficherForm);
     document.getElementById("btn-save").addEventListener("click", ajouterFilm);
