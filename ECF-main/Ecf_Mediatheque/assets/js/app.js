@@ -45,10 +45,8 @@ var granimInstance = new Granim({
 let image = document.getElementById("canvas-complex");                 // 3. récupère l'élément <canvas> par l'id
 
 document.getElementById("button").addEventListener("click", () => {    // 4. au click du bouton
-    image.classList.toggle("invisible");                               // ajoute la class si absc enlève si présente
+    image.classList.toggle("invisible");                               // ajoute la réaction le l'image et la rend visible ou invisible
 });
-
-
 
 function afficherFilms(liste) {       // 5. fonction afficher des films dans le tableau
     const table = document.getElementById("liste-films");
@@ -59,7 +57,7 @@ function afficherFilms(liste) {       // 5. fonction afficher des films dans le 
                          <td>   ${films.annee} <td/>
                          <td>  ${films.realisateur} <td/>
                          <td><button class="btn btn-danger" data-index ="${index}>Supprimer</button><br></td>`;
-        corps.appendChild(ligne);
+        table.appendChild(ligne);
     });
     document.querySelectorAll("btn-danger").forEach(btn => {
         btn.addEventListener("click", (e) => {

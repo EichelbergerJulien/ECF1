@@ -21,10 +21,10 @@ const titre = ("titre-rech");
 const annee = ("annee-rech");
 const type = ("type-rech");
 
-button.addEventListener("click", function() {
+button.addEventListener("click"), () => {
     let data = document.querySelector('#dataApi').value;
 
-    fetch(apiUrl)               
+    fetch(apiUrl)
         .then((reponse) => {
             return reponse.json();                              // 2. fetch
         })
@@ -34,68 +34,69 @@ button.addEventListener("click", function() {
         })
         .catch("Erreur film introuvable");
 
-function afficherCard(data) {
-    card.innerHTML = `  <div class="card">
-                <h5 class="card-poster">: ${data.card}</h5>    
-                <ul>
-                    <li>: ${data.titre}</li>
-                    <li>: ${data.annee}</li>
-                    <li>: ${data.type}</li>
-                </ul>
-            </div>
-        
-`}
-
-
-function rechercherFilms(page = 1) {
-    titre = document.getElementById("titre-rech").value;         // 3. rechercher film
-    annee = document.getElementById("annee-rech").value;
-    type = document.getElementById("type-rech").value;
-
-    if (titre.length < 1) {
-        afficher.message("Veuillez entrer un titre pour rechercher un film !!");
-        return;
+    function afficherCard(data) {
+        card.innerHTML = `<div class="card">
+                        <h5 class="card-poster">: ${data.card}</h5>    
+                        <ul>
+                            <li>: ${data.poster}</li>
+                            <li>: ${data.titre}</li>
+                            <li>: ${data.annee}</li>
+                            <li>: ${data.type}</li>
+                        </ul>
+                      </div>
+        `};
     }
-}
 
-derniereRecherche = { titre, auteur, type };                     // sauvegarder la dernière recherche
+    function rechercherFilms(page = 1) {
+        titre = document.getElementById("titre-rech").value;         // 3. rechercher film
+        annee = document.getElementById("annee-rech").value;
+        type = document.getElementById("type-rech").value;
 
-function afficherResultats(resultats) {
-    const contenu = document.getElementById("résultats");       // 4. afficher les resultats de la page 
-    contenu.innerHTML = "";
-    if (resultats.length === 0) {
-        contenu.innerHTML = "Aucun film à afficher !! ";
-        return;
+        if (titre.length < 1) {
+            afficher.message("Veuillez entrer un titre pour rechercher un film !!");
+            return;
+        }
     }
-    resultats.forEach(film => {
-        const div = document.createElement("div");
-        div.classList.add("film-cart");
-        const poster = film.Poster !== "non disponible" ? film.Poster : "placeholder.jpg";
-        div.innerHTML = `< ="${poster}" alt="">
+
+    derniereRecherche = { titre, auteur, type };                     // sauvegarder la dernière recherche
+
+    function afficherResultats(resultats) {
+        const contenu = document.getElementById("résultats");       // 4. afficher les resultats de la page 
+        contenu.innerHTML = "";
+        if (resultats.length === 0) {
+            contenu.innerHTML = "Aucun film à afficher !! ";
+            return;
+        }
+        resultats.forEach(film => {
+            const div = document.createElement("div");
+            div.classList.add("film-cart");
+            const poster = film.Poster !== "non disponible" ? film.Poster : "placeholder.jpg";
+            div.innerHTML = `< ="${poster}" alt="">
                          < ="${film.title}" alt="">
                          < ="${film.annee}" alt="">
                          < ="${film.type}" alt="">`;
 
-        contenu.appendChild(div);
-    });
-}
-function changerPage(nouvellePage) {                            // 5. changer de page  
-    pageActuelle = nouvellePage;
-    rechercherFilms(nouvellePage);
-}
-function afficherMessage(texte) {
-    const alert = document.getElementById("alert-rech");       // 6. message ( alert )
-    alert.textContent = texte;
-    alert.style.display = "block";
-    setTimeout(() => alert.style.display = "none", 3000);
-}
-function setupForm() {                                        // 7. gestion du formulaire
-    document.getElementById("btn-rech").addEventListener("click",);
-    e.preventDefault();
-    pageActuelle = 1;
-    rechercherFilms();
-}
+            contenu.appendChild(div);
+        });
+    }
+    function changerPage(nouvellePage) {                            // 5. changer de page  
+        pageActuelle = nouvellePage;
+        rechercherFilms(nouvellePage);
+    }
+    function afficherMessage(texte) {
+        const alert = document.getElementById("alert-rech");       // 6. message ( alert )
+        alert.textContent = texte;
+        alert.style.display = "block";
+        setTimeout(() => alert.style.display = "none", 3000);
+    }
+    function setupForm() {                                        // 7. gestion du formulaire
+        document.getElementById("btn-rech").addEventListener("click",);
+        e.preventDefault();
+        pageActuelle = 1;
+        rechercherFilms();
+    }
 
-window.addEventListener("DOMContentloaded", () => {           // 8. initialisation
-    setupForm();
-});
+    window.addEventListener("DOMContentloaded", () => {           // 8. initialisation
+        setupForm();
+    });
+
