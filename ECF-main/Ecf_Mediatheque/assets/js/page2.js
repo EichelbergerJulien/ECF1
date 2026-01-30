@@ -36,6 +36,7 @@ button.addEventListener("click", (e) => {
                         card.innerHTML = `<div class="card">
                         <ul>
                             <img src="${data.Search[1].Poster}">
+      
                             <p> ${data.Search[1].Title}</p>
                             <p> ${data.Search[1].Year}</p>
                         </ul>
