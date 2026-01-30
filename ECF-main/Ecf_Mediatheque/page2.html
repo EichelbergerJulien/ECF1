@@ -3,54 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../Ecf_Mediatheque/assets/css/style.css">
 
     <title>ECF Vidéothèque</title>
 </head>
 
 <body class="text-center"><br><br>
     <main class="container">
-        <h2>Afficher les films via l'Api.</h2><br><br>
-        <hr><br>
+        <h2>Afficher les films via l'Api</h2><br><br>
+        <br>
 
-        <form method="get" class="text-center" action="recherche de film">
+        <form method="get" class="text-center" action="page2.html">
 
             <div class="text-start btn btn-dark mt-5">
-                <input type="text" name="titre" />
-                Entrer le titre du film<br><br>
-                <input type="number" name="année" />
-                Entrer l'année du film<br><br>
-                <select>
+
+                <label for="title">Entrer le titre du film</label>
+                <input type="text" id="title" name="titre" />
+                <br><br>
+
+                <label for="year">Entrer l'année du film</label>
+                <input type="number" id="year" name="annee" />
+                <br><br>
+                
+                <label for="types">Rechercher le type</label>
+                <select name="types" id="types">
+                    <option value="">Choisissez le type</option>
                     <option value="film">Film</option>
-                    <option value="épisode">Episode</option>
-                    <option value="séries">Séries</option>
+                    <option value="episode">Episode</option>
+                    <option value="series">Séries</option>
                     <option value="saison">Saison</option>
-                </select>
-                Entrer le type du film<br><br><br>
+                </select><br><br>
             </div>
             <br><br>
 
             <button type="submit" class="btn btn-dark" id="btn-ajouter">Rechercher</button><br><br>
 
             <div class="card">
-                <h5 class="card-poster">: ${data.card}</h5>
-                <ul>
-                    <li>: ${data.poster}</li>
-                    <li>: ${data.titre}</li>
-                    <li>: ${data.annee}</li>
-                    <li>: ${data.type}</li>
-                </ul>
-            </div>
 
+            </div>
         </form>
         <br>
 
-        <script type="module" src="page2.html"></script>
+        <script src="../Ecf_Mediatheque/assets/js/page2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>

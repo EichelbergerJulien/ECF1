@@ -5,7 +5,7 @@ html {
 
 body {
   background-image:
-    url("/ECF-main/Ecf_Mediatheque/assets/img/index2.jpg");
+    url("../img/index2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 
